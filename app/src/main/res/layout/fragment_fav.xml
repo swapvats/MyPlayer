@@ -6,6 +6,7 @@
     tools:context=".fragments.FavFragment">
 
     <!-- TODO: Update blank fragment layout and chill -->
+    <!-- TODO: Update blank fragment layout and chill -->
 
     <ListView
         android:layout_width="match_parent"
