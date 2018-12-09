@@ -48,18 +48,19 @@ public class MainActivity extends AppCompatActivity
 
 
 
-//
-//        MainScreenFragment mainScreenFragment = new MainScreenFragment();
-//        FavFragment favFragment = new FavFragment();
-//
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//
-//
-//
-//      FragmentTransaction  fragmentTransaction = fragmentManager.beginTransaction();
-//        fragmentTransaction.add( R.id.details_fragment,mainScreenFragment,"MainScreenFragment");
-//
-//        fragmentTransaction.commit();
+
+        MainScreenFragment mainScreenFragment = new MainScreenFragment();
+        FavFragment favFragment = new FavFragment();
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+
+
+        FragmentTransaction  fragmentTransaction = fragmentManager.beginTransaction();
+
+        fragmentTransaction.add( R.id.details_fragment,mainScreenFragment,"MainScreenFragment");
+
+        fragmentTransaction.commit();
 
 
 
