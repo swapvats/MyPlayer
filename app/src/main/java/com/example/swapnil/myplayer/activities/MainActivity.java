@@ -46,9 +46,14 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        // Setting the default menu as checked menu //TODO: LOOK HOW IT'S DONE
+        Menu menu = navigationView.getMenu();
+        menu.findItem(R.id.nav_all_songs).setChecked(true);
 
 
 
+
+        //Setiing Default Fragment
         MainScreenFragment mainScreenFragment = new MainScreenFragment();
         FavFragment favFragment = new FavFragment();
 
