@@ -30,7 +30,6 @@ public class AllSongAdapter extends RecyclerView.Adapter<AllSongAdapter.MyViewHo
         this.mContext = mContext;
     }
 
-    ArrayList<String> nlmao = new ArrayList<>();
 
 
     @NonNull
@@ -59,7 +58,7 @@ public class AllSongAdapter extends RecyclerView.Adapter<AllSongAdapter.MyViewHo
                 args.putString("SONG_ARTIST",songObject.getSongArtist());
                 args.putString("SONG_TITLE",songObject.getSongTitle());
                 args.putString("PATH",songObject.getSongData());
-
+                
                 args.putInt("SONG_POS",i);
                 args.putParcelableArrayList("SONG_DATA",songsArrayList);
 
