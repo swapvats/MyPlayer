@@ -30,6 +30,7 @@ public class AllSongAdapter extends RecyclerView.Adapter<AllSongAdapter.MyViewHo
         this.mContext = mContext;
     }
 
+    ArrayList<String> nlmao = new ArrayList<>();
 
 
     @NonNull
