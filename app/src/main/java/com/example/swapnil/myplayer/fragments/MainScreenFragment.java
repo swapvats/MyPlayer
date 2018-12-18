@@ -3,6 +3,7 @@ package com.example.swapnil.myplayer.fragments;
 
 import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
@@ -105,6 +106,9 @@ public class MainScreenFragment extends Fragment {
 
         Uri songUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
 
+
+
+
         //Cursor
         Cursor songCursor = contentResolver.query(songUri, null, null, null, null);
 
@@ -115,6 +119,8 @@ public class MainScreenFragment extends Fragment {
             int songArtist = songCursor.getColumnIndex(MediaStore.Audio.Media.ARTIST);
             int songData = songCursor.getColumnIndex(MediaStore.Audio.Media.DATA);
             int dateAdded = songCursor.getColumnIndex(MediaStore.Audio.Media.DATE_ADDED);
+            int albumId = songCursor.getColumnIndex(MediaStore.Audio.Media.ALBUM_ID);
+
 
 
             while (songCursor.moveToNext()) {
@@ -122,13 +128,14 @@ public class MainScreenFragment extends Fragment {
                 String currentSongTitle = songCursor.getString(songTitle);
                 String currentSongArtist = songCursor.getString(songArtist);
                 String currentSongData = songCursor.getString(songData);
+                String currentAlbumId = songCursor.getString(albumId);
                 String path = null;
 
 
                 long currentDateAdded = songCursor.getLong(dateAdded);
 
 
-                songsArrayList.add(new Songs(currentSongId, currentSongTitle, currentSongArtist, currentSongData, currentDateAdded));
+                songsArrayList.add(new Songs(currentSongId, currentSongTitle, currentSongArtist, currentSongData, currentDateAdded,currentAlbumId));
 
             }
 

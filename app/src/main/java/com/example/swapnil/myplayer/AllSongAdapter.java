@@ -1,6 +1,7 @@
 package com.example.swapnil.myplayer;
 
 import android.app.Activity;
+import android.content.ContentUris;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -53,11 +54,16 @@ public class AllSongAdapter extends RecyclerView.Adapter<AllSongAdapter.MyViewHo
         myViewHolder.songName.setText(songObject.getSongTitle());
         myViewHolder.artistName.setText(songObject.getSongArtist());
 
+
         myViewHolder.mItemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SongPlayingFragment songPlayingFragment = new SongPlayingFragment();
                 MediaPlayer mymedia = SongPlayingFragment.getMediaPlayer();
+
+                //AlbumArt
+                final  Uri sArtworkUri = Uri.parse("content://media/external/audio/albumart");
+                Uri albumArtUri = ContentUris.withAppendedId(sArtworkUri,Long.parseLong(songObject.getAlbumID()));
 
               if (SongPlayingFragment.getMediaPlayer().isPlaying()) {
                   mymedia.reset();
@@ -67,7 +73,10 @@ public class AllSongAdapter extends RecyclerView.Adapter<AllSongAdapter.MyViewHo
                 args.putString("SONG_ARTIST",songObject.getSongArtist());
                 args.putString("SONG_TITLE",songObject.getSongTitle());
                 args.putString("PATH",songObject.getSongData());
-                
+                args.putString("ALBUM_ID",songObject.getAlbumID());
+                args.putString("ALBUM_ART_URI",String.valueOf(albumArtUri));
+
+
                 args.putInt("SONG_POS",i);
                 args.putParcelableArrayList("SONG_DATA",songsArrayList);
 

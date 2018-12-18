@@ -5,6 +5,7 @@ public class CurrentSongHelper {
     String songTitle;
     String songArtist;
     String songData;
+    String albumId;
 
     long dateAdded;
     boolean isPlaying = false;
@@ -12,6 +13,13 @@ public class CurrentSongHelper {
     boolean isShuffle = false;
     int trackPostion = 0;
 
+    public String getAlbumId() {
+        return albumId;
+    }
+
+    public void setAlbumId(String albumId) {
+        this.albumId = albumId;
+    }
 
     public long getSongID() {
         return songID;

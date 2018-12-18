@@ -3,6 +3,7 @@ package com.example.swapnil.myplayer.fragments;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ContentUris;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -18,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +45,7 @@ public class SongPlayingFragment extends Fragment {
     SeekBar seekBar;
     Activity mActivity;
     MaterialButton pause;
+    ImageView albumArt;
 
 
     int current_pos = 0;
@@ -90,13 +93,15 @@ public class SongPlayingFragment extends Fragment {
         seekBar = view.findViewById(R.id.seekBar);
         start = view.findViewById(R.id.start_Duration);
         end = view.findViewById(R.id.end_Duration);
+        albumArt = view.findViewById(R.id.album_art);
         mDisplaySongArtist = view.findViewById(R.id.displaySongArtist);
         mDisplaySongTitle = view.findViewById(R.id.displaySongTitle);
         mDisplaySongPath = view.findViewById(R.id.displaySongPath);
 
 
         //Declaration
-        String songName,songArtist,songPath;
+        String songName,songArtist,songPath,albumID;
+        String albumArtUri;
 
 
 
@@ -106,6 +111,10 @@ public class SongPlayingFragment extends Fragment {
         songName = args.getString("SONG_TITLE");
         songArtist = args.getString("SONG_ARTIST");
         songPath = args.getString("PATH");
+        albumID = args.getString("ALBUM_ID");
+        albumArtUri = args.getString("ALBUM_ART_URI");
+
+
 
 
 
@@ -120,6 +129,8 @@ public class SongPlayingFragment extends Fragment {
         songHelper.setSongTitle(songName);
         songHelper.setSongData(songPath); // song path wala
         songHelper.setTrackPostion(current_pos);
+        songHelper.setAlbumId(albumID);
+
 
 
         songHelper.setPlaying(true);
@@ -134,6 +145,7 @@ public class SongPlayingFragment extends Fragment {
         mDisplaySongArtist.setText(songArtist);
         mDisplaySongTitle.setText(songName);
         mDisplaySongPath.setText(songPath);
+        albumArt.setImageURI(Uri.parse(albumArtUri));
 
 
 
@@ -349,6 +361,12 @@ public class SongPlayingFragment extends Fragment {
         songHelper.setSongTitle(nextsong.getSongTitle());
         songHelper.setSongData(nextsong.getSongData());
 
+       // Bundle args = getArguments();
+      // String albumArtUri = args.getString("ALBUM_ART_URI");
+        final  Uri sArtworkUri = Uri.parse("content://media/external/audio/albumart");
+        Uri albumArtUri = ContentUris.withAppendedId(sArtworkUri,Long.parseLong(nextsong.getAlbumID()));
+        albumArt.setImageURI(albumArtUri);
+
 
         mediaPlayer.reset();
 
@@ -373,6 +391,10 @@ public class SongPlayingFragment extends Fragment {
         songHelper.setSongArtist(prevsong.getSongArtist());
         songHelper.setSongTitle(prevsong.getSongTitle());
         songHelper.setSongData(prevsong.getSongData());
+
+        final  Uri sArtworkUri = Uri.parse("content://media/external/audio/albumart");
+        Uri albumArtUri = ContentUris.withAppendedId(sArtworkUri,Long.parseLong(prevsong.getAlbumID()));
+        albumArt.setImageURI(albumArtUri);
 
         mediaPlayer.reset();
 
