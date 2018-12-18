@@ -1,16 +1,16 @@
 package com.example.swapnil.myplayer;
 
 public class CurrentSongHelper {
-        long songID;
-     String songTitle;
-     String songArtist;
-     String songData;
+    long songID;
+    String songTitle;
+    String songArtist;
+    String songData;
 
-     long dateAdded;
-     boolean isPlaying=false;
-     boolean isLoop=false;
-     boolean isShuffle=false;
-     int trackPostion=0;
+    long dateAdded;
+    boolean isPlaying = false;
+    boolean isLoop = false;
+    boolean isShuffle = false;
+    int trackPostion = 0;
 
 
     public long getSongID() {

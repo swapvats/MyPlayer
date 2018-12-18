@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,8 +50,6 @@ public class MainActivity extends AppCompatActivity
         menu.findItem(R.id.nav_all_songs).setChecked(true);
 
 
-
-
         //Setiing Default Fragment
         MainScreenFragment mainScreenFragment = new MainScreenFragment();
         FavFragment favFragment = new FavFragment();
@@ -60,13 +57,11 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
 
 
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        FragmentTransaction  fragmentTransaction = fragmentManager.beginTransaction();
-
-        fragmentTransaction.add( R.id.details_fragment,mainScreenFragment,"MainScreenFragment");
+        fragmentTransaction.add(R.id.details_fragment, mainScreenFragment, "MainScreenFragment");
 
         fragmentTransaction.commit();
-
 
 
     }
@@ -113,39 +108,38 @@ public class MainActivity extends AppCompatActivity
             MainScreenFragment mainScreenFragment = new MainScreenFragment();
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.details_fragment,mainScreenFragment)
+            fragmentTransaction.replace(R.id.details_fragment, mainScreenFragment)
                     .commit();
 
         } else if (id == R.id.nav_fav_songs) {
             FavFragment favFragment = new FavFragment();
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.details_fragment,favFragment)
+            fragmentTransaction.replace(R.id.details_fragment, favFragment)
 
                     .commit();
         } else if (id == R.id.nav_settings) {
             SettingsFragment settingsFragment = new SettingsFragment();
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.details_fragment,settingsFragment)
+            fragmentTransaction.replace(R.id.details_fragment, settingsFragment)
                     .commit();
 
         } else if (id == R.id.nav_about_us) {
             AboutUsFragment aboutUsFragment = new AboutUsFragment();
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.details_fragment,aboutUsFragment)
+            fragmentTransaction.replace(R.id.details_fragment, aboutUsFragment)
                     .commit();
 
-        } else if (id == R.id.nav_song_playing){
+        } else if (id == R.id.nav_song_playing) {
             SongPlayingFragment songPlayingFragment = new SongPlayingFragment();
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.details_fragment,songPlayingFragment)
+            fragmentTransaction.replace(R.id.details_fragment, songPlayingFragment)
                     .commit();
 
         }
-
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

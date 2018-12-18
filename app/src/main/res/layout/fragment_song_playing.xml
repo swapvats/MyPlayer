@@ -2,7 +2,7 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,6 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="false"
+            android:alpha=".1"
             android:cropToPadding="false"
             android:scaleType="centerCrop"
             android:scrollY="-55dp"
@@ -27,8 +28,8 @@
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_height="match_parent">
-        
-        
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:background="#720d5d"
@@ -51,7 +52,7 @@
                     android:textStyle="bold"
                     android:singleLine="true"
                     android:ellipsize="marquee"
-                    android:layout_centerHorizontal="true"/>
+                    android:layout_centerHorizontal="true" />
 
 
                 <TextView
@@ -64,14 +65,14 @@
                     android:id="@+id/displaySongArtist"
                     android:singleLine="true"
                     android:ellipsize="marquee"
-                    android:layout_centerHorizontal="true"/>
+                    android:layout_centerHorizontal="true" />
 
                 <SeekBar
                     android:layout_width="match_parent"
                     android:id="@+id/seekBar"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_below="@id/displaySongArtist"/>
+                    android:layout_below="@id/displaySongArtist" />
 
                 <TextView
                     android:id="@+id/start_Duration"
@@ -83,8 +84,7 @@
                     android:layout_marginBottom="8dp"
                     android:hint="start Duration"
                     android:textAlignment="center"
-                    android:textColor="#fff"
-                    />
+                    android:textColor="#fff" />
 
 
                 <TextView
@@ -99,8 +99,7 @@
                     android:layout_marginBottom="8dp"
                     android:hint="end Duration"
                     android:textAlignment="center"
-                    android:textColor="#fff"
-                     />
+                    android:textColor="#fff" />
 
 
                 <TextView
@@ -113,18 +112,19 @@
                     android:id="@+id/displaySongPath"
                     android:singleLine="true"
                     android:ellipsize="marquee"
-                    android:layout_centerHorizontal="true"/>
+                    android:layout_centerHorizontal="true" />
 
 
                 <Button
                     android:layout_marginTop="35dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="#fff"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/button_color1"
                     android:id="@+id/play_button"
                     android:text="Pause"
-                    android:layout_below="@id/displaySongPath"/>
+                    android:layout_below="@id/displaySongPath" />
 
                 <android.support.design.button.MaterialButton
                     android:id="@+id/pause_button"
@@ -133,7 +133,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/play_button"
                     android:layout_centerHorizontal="true"
-                    android:text="F*ck"
+                    android:text="Not Defined"
                     android:textAppearance="@style/Widget.MaterialComponents.Button.OutlinedButton" />
 
 
@@ -141,47 +141,41 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Next"
+                    android:textColor="#fff"
                     android:background="@drawable/button_color2"
                     android:layout_below="@id/play_button"
                     android:layout_toRightOf="@id/pause_button"
-                    android:id="@+id/next_button"/>
-
+                    android:id="@+id/next_button" />
 
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="PREV"
+                    android:textColor="#fff"
                     android:background="@drawable/button_color3"
                     android:id="@+id/prev_button"
                     android:layout_below="@id/play_button"
-                    android:layout_toLeftOf="@id/pause_button"/>
+                    android:layout_toLeftOf="@id/pause_button" />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/pause_button"
+                    android:textColor="#fff"
                     android:text="stop"
                     android:background="@drawable/button_color"
                     android:id="@+id/stop_Button"
-                    android:layout_centerHorizontal="true"/>
-
-
-
+                    android:layout_centerHorizontal="true" />
 
 
             </RelativeLayout>
-
-
-
 
 
         </LinearLayout>
 
 
     </LinearLayout>
-
-
 
 
 </LinearLayout>

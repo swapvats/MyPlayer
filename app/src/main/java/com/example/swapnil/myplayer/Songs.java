@@ -63,7 +63,6 @@ public class Songs implements Parcelable {
     }
 
 
-
     protected Songs(Parcel in) {
         songID = in.readLong();
         songTitle = in.readString();

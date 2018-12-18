@@ -2,6 +2,8 @@ package com.example.swapnil.myplayer;
 
 import android.app.Activity;
 import android.content.Context;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
@@ -10,6 +12,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.swapnil.myplayer.fragments.SongPlayingFragment;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class AllSongAdapter extends RecyclerView.Adapter<AllSongAdapter.MyViewHolder> {
@@ -29,7 +33,6 @@ public class AllSongAdapter extends RecyclerView.Adapter<AllSongAdapter.MyViewHo
         this.songsArrayList = songsArrayList;
         this.mContext = mContext;
     }
-
 
 
     @NonNull
@@ -54,6 +57,12 @@ public class AllSongAdapter extends RecyclerView.Adapter<AllSongAdapter.MyViewHo
             @Override
             public void onClick(View v) {
                 SongPlayingFragment songPlayingFragment = new SongPlayingFragment();
+                MediaPlayer mymedia = SongPlayingFragment.getMediaPlayer();
+
+              if (SongPlayingFragment.getMediaPlayer().isPlaying()) {
+                  mymedia.reset();
+
+              }
                 Bundle args = new Bundle();
                 args.putString("SONG_ARTIST",songObject.getSongArtist());
                 args.putString("SONG_TITLE",songObject.getSongTitle());

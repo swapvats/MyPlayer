@@ -44,14 +44,9 @@ public class FavFragment extends Fragment {
         getMusic();
 
 
-        ArrayAdapter arrayAdapter = new ArrayAdapter<>(Objects.requireNonNull(getActivity()),android.R.layout.simple_list_item_1,songsNames);
+        ArrayAdapter arrayAdapter = new ArrayAdapter<>(Objects.requireNonNull(getActivity()), android.R.layout.simple_list_item_1, songsNames);
 
         mListView.setAdapter(arrayAdapter);
-
-
-
-
-
 
 
         return view;
@@ -59,12 +54,7 @@ public class FavFragment extends Fragment {
     }
 
 
-
-    public void getMusic(){
-
-
-
-
+    public void getMusic() {
 
 
         ContentResolver contentResolver = Objects.requireNonNull(getContext()).getContentResolver();
@@ -72,9 +62,9 @@ public class FavFragment extends Fragment {
         Uri songUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
 
         //Cursor
-        Cursor songCursor = contentResolver.query(songUri,null,null,null,null);
+        Cursor songCursor = contentResolver.query(songUri, null, null, null, null);
 
-        if (songCursor!=null && songCursor.moveToFirst()){
+        if (songCursor != null && songCursor.moveToFirst()) {
 
             int songId = songCursor.getColumnIndex(MediaStore.Audio.Media._ID);
             int songTitle = songCursor.getColumnIndex(MediaStore.Audio.Media.TITLE);
@@ -82,7 +72,7 @@ public class FavFragment extends Fragment {
             int songData = songCursor.getColumnIndex(MediaStore.Audio.Media.DATA);
             int dateAdded = songCursor.getColumnIndex(MediaStore.Audio.Media.DATE_ADDED);
 
-            while (songCursor.moveToNext()){
+            while (songCursor.moveToNext()) {
                 long currentSongId = songCursor.getLong(songId);
                 String currentSongTitle = songCursor.getString(songTitle);
                 String currentSongArtist = songCursor.getString(songArtist);
@@ -91,8 +81,6 @@ public class FavFragment extends Fragment {
 
 
                 songsNames.add(currentSongTitle);
-
-
 
 
             }

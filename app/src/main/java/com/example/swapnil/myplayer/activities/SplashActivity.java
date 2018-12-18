@@ -25,35 +25,24 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
 
-        if (ContextCompat.checkSelfPermission(SplashActivity.this,Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+        if (ContextCompat.checkSelfPermission(SplashActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(SplashActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
 
-                ActivityCompat.requestPermissions(SplashActivity.this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},MY_PERMISSION_REQUEST);
+                ActivityCompat.requestPermissions(SplashActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSION_REQUEST);
+            } else {
+
+                ActivityCompat.requestPermissions(SplashActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSION_REQUEST);
+
             }
-            else {
-
-                ActivityCompat.requestPermissions(SplashActivity.this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},MY_PERMISSION_REQUEST);
-
-            }
-        }
-
-        else {
+        } else {
             //TODO:
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    startActivity(new Intent(SplashActivity.this,MainActivity.class));
+                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
                 }
-            },1000/2);
+            }, 1000 / 2);
         }
-
-
-
-
-
-
-
-
 
 
     }
@@ -72,9 +61,9 @@ public class SplashActivity extends AppCompatActivity {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            startActivity(new Intent(SplashActivity.this,MainActivity.class));
+                            startActivity(new Intent(SplashActivity.this, MainActivity.class));
                         }
-                    },1000/2);
+                    }, 1000 / 2);
 
 
                 } else {

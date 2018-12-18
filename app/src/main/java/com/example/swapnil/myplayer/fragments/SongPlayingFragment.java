@@ -10,8 +10,10 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.design.button.MaterialButton;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +29,8 @@ import com.example.swapnil.myplayer.Songs;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
+
+import static android.support.constraint.Constraints.TAG;
 
 
 /**
@@ -47,10 +51,16 @@ public class SongPlayingFragment extends Fragment {
     int movePosition = 0;
 
     ArrayList<Songs> songs;
-    private MediaPlayer mediaPlayer;
+    static MediaPlayer mediaPlayer = new MediaPlayer();
+
+    public static MediaPlayer getMediaPlayer() {
+
+        return mediaPlayer;
+    }
 
     private Handler handler = new Handler();
-    CurrentSongHelper songHelper = new CurrentSongHelper();
+   static CurrentSongHelper songHelper = new CurrentSongHelper();
+
 
 
     public SongPlayingFragment() {
@@ -67,7 +77,7 @@ public class SongPlayingFragment extends Fragment {
 
 
 
-        mediaPlayer = new MediaPlayer();
+       // mediaPlayer = new MediaPlayer();
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
 
@@ -131,9 +141,7 @@ public class SongPlayingFragment extends Fragment {
 
 
         // TODO: LOOK HERE
-        if (mediaPlayer.isPlaying()){
-            mediaPlayer.reset();
-        }
+
 
 
 
@@ -209,9 +217,6 @@ public class SongPlayingFragment extends Fragment {
 
 
             clickHandler();
-
-
-
 
 
         return view;
@@ -300,6 +305,8 @@ public class SongPlayingFragment extends Fragment {
         stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                play.setText("Pause");
 
                 mediaPlayer.stop();
                 try {

@@ -11,6 +11,7 @@ import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,7 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class MainScreenFragment extends Fragment {
+    public static final String TAG = "XXXX";
 
 
     RecyclerView songRecyclerView;
@@ -45,15 +47,15 @@ public class MainScreenFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        Log.d(TAG, "onCreateView: MainScreen");
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_main_screen, container, false);
 
 
-
         songRecyclerView = view.findViewById(R.id.recycler_SongList);
         allsongs = getSongsFromHome();
-
 
 
 //       ArrayList<Songs> mySongs = new ArrayList<>();
@@ -65,9 +67,7 @@ public class MainScreenFragment extends Fragment {
 //       mySongs.add(new Songs(12,"DilliWalliGF","Rihanna","Lmao",311));
 
 
-
-
-        AllSongAdapter allSongAdapter = new AllSongAdapter(allsongs,view.getContext());
+        AllSongAdapter allSongAdapter = new AllSongAdapter(allsongs, view.getContext());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(view.getContext());
 
         songRecyclerView.setLayoutManager(layoutManager);
@@ -82,6 +82,7 @@ public class MainScreenFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         myActivity = (Activity) context;
+        Log.d(TAG, "onAttach: MAinScan");
 
     }
 
@@ -90,12 +91,13 @@ public class MainScreenFragment extends Fragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         myActivity = activity;
+        Log.d(TAG, "onAttach: MainS");
     }
 
-    ArrayList<Songs> getSongsFromHome(){
+    ArrayList<Songs> getSongsFromHome() {
         // Content Resolver And Content Provider To Assess Data
 
-
+        Log.d(TAG, "getSongsFromHome: MAinSce");
         ArrayList<Songs> songsArrayList = new ArrayList<>();
 
 
@@ -104,9 +106,9 @@ public class MainScreenFragment extends Fragment {
         Uri songUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
 
         //Cursor
-        Cursor songCursor = contentResolver.query(songUri,null,null,null,null);
+        Cursor songCursor = contentResolver.query(songUri, null, null, null, null);
 
-        if (songCursor!=null && songCursor.moveToFirst()){
+        if (songCursor != null && songCursor.moveToFirst()) {
 
             int songId = songCursor.getColumnIndex(MediaStore.Audio.Media._ID);
             int songTitle = songCursor.getColumnIndex(MediaStore.Audio.Media.TITLE);
@@ -115,7 +117,7 @@ public class MainScreenFragment extends Fragment {
             int dateAdded = songCursor.getColumnIndex(MediaStore.Audio.Media.DATE_ADDED);
 
 
-            while (songCursor.moveToNext()){
+            while (songCursor.moveToNext()) {
                 long currentSongId = songCursor.getLong(songId);
                 String currentSongTitle = songCursor.getString(songTitle);
                 String currentSongArtist = songCursor.getString(songArtist);
@@ -126,8 +128,7 @@ public class MainScreenFragment extends Fragment {
                 long currentDateAdded = songCursor.getLong(dateAdded);
 
 
-
-                songsArrayList.add(new Songs(currentSongId,currentSongTitle,currentSongArtist,currentSongData,currentDateAdded));
+                songsArrayList.add(new Songs(currentSongId, currentSongTitle, currentSongArtist, currentSongData, currentDateAdded));
 
             }
 
@@ -137,6 +138,6 @@ public class MainScreenFragment extends Fragment {
         return songsArrayList;
     }
 
-    }
+}
 
 

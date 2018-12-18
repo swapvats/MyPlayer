@@ -23,9 +23,10 @@
             android:icon="@android:drawable/ic_menu_edit"
             android:title="About Us" />
 
-        <item android:id="@+id/nav_song_playing"
+        <item
+            android:id="@+id/nav_song_playing"
             android:icon="@android:drawable/btn_star_big_on"
-            android:title="Song Playing"/>
+            android:title="Song Playing" />
     </group>
 
 
